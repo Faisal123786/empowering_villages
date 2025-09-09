@@ -1,3 +1,4 @@
+// server.js (entry point)
 import http from "http";
 import cluster from "cluster";
 import os from "os";
@@ -7,6 +8,7 @@ import logger from "./config/logger.js";
 
 const PORT = process.env.PORT || 5000;
 
+// 🚀 Development / local (with cluster)
 if (process.env.NODE_ENV !== "production") {
   const numCPUs = os.cpus().length;
 
@@ -27,4 +29,11 @@ if (process.env.NODE_ENV !== "production") {
       });
     });
   }
+} else {
+  // 🚀 Production (Vercel, serverless, or single instance server)
+  connectDB()
+    .then(() => logger.info("Database connected in production"))
+    .catch((err) => logger.error("Database connection failed", err));
+
+  // export default app; // 👈 required for Vercel / serverless
 }
