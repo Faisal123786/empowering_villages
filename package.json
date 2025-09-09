@@ -23,7 +23,9 @@
   "dependencies": {
     "@opentelemetry/auto-instrumentations-node": "^0.62.2",
     "@opentelemetry/sdk-node": "^0.204.0",
+    "@sendgrid/mail": "^8.1.5",
     "@sentry/node": "^10.10.0",
+    "@upstash/redis": "^1.35.3",
     "argon2": "^0.44.0",
     "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
